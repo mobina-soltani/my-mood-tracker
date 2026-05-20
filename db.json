@@ -95,6 +95,42 @@
       "intensityAfter": 4,
       "id": "1779249898881",
       "timestamp": "5/19/2026, 9:04:58 PM"
+    },
+    {
+      "emotions": "",
+      "intensity": 5,
+      "trigger": "",
+      "bodyFeeling": "",
+      "thoughts": "",
+      "actionTaken": "",
+      "whatHelped": "",
+      "intensityAfter": 5,
+      "id": "1779251075547",
+      "timestamp": "5/19/2026, 9:24:35 PM"
+    },
+    {
+      "emotions": "",
+      "intensity": 5,
+      "trigger": "",
+      "bodyFeeling": "",
+      "thoughts": "",
+      "actionTaken": "",
+      "whatHelped": "",
+      "intensityAfter": 5,
+      "id": "1779251082451",
+      "timestamp": "5/19/2026, 9:24:42 PM"
+    },
+    {
+      "emotions": "",
+      "intensity": 5,
+      "trigger": "",
+      "bodyFeeling": "",
+      "thoughts": "",
+      "actionTaken": "",
+      "whatHelped": "",
+      "intensityAfter": 5,
+      "id": "1779251087596",
+      "timestamp": "5/19/2026, 9:24:47 PM"
     }
   ]
 }
