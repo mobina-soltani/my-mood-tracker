@@ -71,13 +71,8 @@ export default function App() {
 
       if (response.ok) {
         alert("Mood saved successfully to db.json!");
+        fetchHistory();
         // Optional: Reset the form here if you want a clean slate
-      }
-
-      // ... your fetch('.../api/save') logic ...
-      if (response.ok) {
-        alert("Saved!");
-        fetchHistory(); // <--- Add this line here!
       }
     } catch (error) {
       console.error("Error saving entry:", error);
