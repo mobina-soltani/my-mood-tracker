@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function App() {
   const [form, setForm] = useState({
@@ -11,6 +11,24 @@ export default function App() {
     whatHelped: "",
     intensityAfter: 5
   });
+
+  const [history, setHistory] = useState<any[]>([]);
+
+  // Function to fetch logs from the backend
+  const fetchHistory = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/logs');
+      const data = await response.json();
+      setHistory(data.reverse()); // Reverse so the newest is at the top
+    } catch (error) {
+      console.error("Error fetching history:", error);
+    }
+  };
+
+  // This runs once as soon as the app loads
+  useEffect(() => {
+    fetchHistory();
+  }, []);
 
   // --- STEP 3: THE SAVE FUNCTION ---
   const saveEntry = async () => {
@@ -31,6 +49,12 @@ export default function App() {
       if (response.ok) {
         alert("Mood saved successfully to db.json!");
         // Optional: Reset the form here if you want a clean slate
+      }
+
+      // ... your fetch('.../api/save') logic ...
+      if (response.ok) {
+        alert("Saved!");
+        fetchHistory(); // <--- Add this line here!
       }
     } catch (error) {
       console.error("Error saving entry:", error);
