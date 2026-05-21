@@ -29,6 +29,23 @@ app.get('/api/logs', async (req, res) => {
   }
 });
 
+// DELETE: Remove a specific log by its ID
+app.delete('/api/logs/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await db.update(({ logs }) => {
+      const index = logs.findIndex(log => log.id === id);
+      if (index !== -1) {
+        logs.splice(index, 1);
+      }
+    });
+    console.log(`Log ${id} deleted successfully.`);
+    res.json({ status: 'success' });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete log" });
+  }
+});
+
 // The "Read" instruction
 app.get('/api/logs', (req, res) => {
   res.send(db.data.logs);
