@@ -17,6 +17,18 @@ app.post('/api/save', async (req, res) => {
   res.send({ status: 'success' });
 });
 
+// GET: Retrieve all mood logs from the database
+app.get('/api/logs', async (req, res) => {
+  try {
+    await db.read(); // Refresh the data from the db.json file
+    // Send the logs back to the frontend, or an empty array if none exist
+    res.json(db.data.logs || []);
+  } catch (error) {
+    console.error("Failed to read logs:", error);
+    res.status(500).json({ error: "Could not retrieve logs" });
+  }
+});
+
 // The "Read" instruction
 app.get('/api/logs', (req, res) => {
   res.send(db.data.logs);

@@ -131,6 +131,30 @@
       "intensityAfter": 5,
       "id": "1779251087596",
       "timestamp": "5/19/2026, 9:24:47 PM"
+    },
+    {
+      "emotions": "",
+      "intensity": 5,
+      "trigger": "",
+      "bodyFeeling": "",
+      "thoughts": "",
+      "actionTaken": "",
+      "whatHelped": "",
+      "intensityAfter": 5,
+      "id": "1779336010269",
+      "timestamp": "5/20/2026, 9:00:10 PM"
+    },
+    {
+      "emotions": "",
+      "intensity": 5,
+      "trigger": "",
+      "bodyFeeling": "",
+      "thoughts": "",
+      "actionTaken": "",
+      "whatHelped": "",
+      "intensityAfter": 7,
+      "id": "1779336032777",
+      "timestamp": "5/20/2026, 9:00:32 PM"
     }
   ]
 }
