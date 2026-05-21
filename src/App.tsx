@@ -25,6 +25,29 @@ export default function App() {
     }
   };
 
+  const deleteEntry = async (id: string) => {
+  // Check if ID is actually arriving
+  console.log("Attempting to delete ID:", id); 
+  
+  if (!window.confirm("Are you sure?")) return;
+
+  try {
+    // Note the backticks `` and the ${id}
+    const response = await fetch(`http://localhost:3001/api/logs/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      fetchHistory(); 
+    } else {
+      console.error("Server refused to delete. Status:", response.status);
+    }
+  } catch (error) {
+    console.error("Network error:", error);
+  }
+};
+  
+
   // This runs once as soon as the app loads
   useEffect(() => {
     fetchHistory();
@@ -134,8 +157,23 @@ export default function App() {
             <div key={log.id} className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 border-l-4 border-l-indigo-500 animate-in fade-in slide-in-from-bottom-2 duration-500">
               <div className="flex justify-between items-start mb-3">
                 <div>
-                  <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">{log.timestamp}</p>
-                  <h3 className="font-bold text-lg text-slate-800">{log.emotions}</h3>
+                  <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">{log.timestamp}</p>
+                    <h3 className="font-bold text-lg text-slate-800">{log.emotions}</h3>
+                  </div>
+                  <div className="flex flex-col items-end gap-3">
+                    {/* THE DELETE BUTTON */}
+                    <button 
+                      onClick={() => deleteEntry(log.id)}
+                      className="text-slate-300 hover:text-red-500 transition-colors"
+                      title="Delete log"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                    </button>
+                    {/* ... your existing intensity circles ... */}
+                  </div>
+                </div>
                 </div>
                 <div className="text-right">
                   <span className="text-sm font-medium text-slate-400 block mb-1">Intensity</span>
