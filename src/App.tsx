@@ -120,6 +120,49 @@ export default function App() {
           </button>
         </div>
       </div>
+      {/* --- HISTORY SECTION --- */}
+      <div className="mt-12 space-y-6">
+        <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+          <span>Recent Logs</span>
+          <span className="bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded-full">
+            {history.length}
+          </span>
+        </h2>
+
+        <div className="grid gap-4">
+          {history.map((log: any) => (
+            <div key={log.id} className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 border-l-4 border-l-indigo-500 animate-in fade-in slide-in-from-bottom-2 duration-500">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">{log.timestamp}</p>
+                  <h3 className="font-bold text-lg text-slate-800">{log.emotions}</h3>
+                </div>
+                <div className="text-right">
+                  <span className="text-sm font-medium text-slate-400 block mb-1">Intensity</span>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-bold">{log.intensity}</span>
+                    <span className="text-slate-300">→</span>
+                    <span className="bg-indigo-600 text-white px-2 py-1 rounded text-xs font-bold">{log.intensityAfter}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  <span className="font-bold text-slate-400 uppercase text-[10px] mr-2">Trigger</span>
+                  {log.trigger}
+                </p>
+              </div>
+            </div>
+          ))}
+
+          {history.length === 0 && (
+            <div className="text-center py-12 border-2 border-dashed border-slate-200 rounded-3xl text-slate-400">
+              No logs yet. Start by sharing how you feel above!
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
